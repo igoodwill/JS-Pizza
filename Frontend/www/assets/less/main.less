@@ -1,3 +1,152 @@
-@mainColor: blue;
+@mainColor: orange;
+@headerMainColor: darkgrey;
+@footerMainColor: lighten(@headerMainColor, 20%);
+@lightColor: white;
+@buttonColor: darken(@mainColor, 5%);
+@flagColor: darken(@mainColor, 7%);
+@large: 16px;
+@flagWidth: 100px;
+@topFlagHeight: 85px;
+@bottomFlagHeight: 125px;
+@flagYBorder: 15px;
+@flagXBorder: @flagWidth / 2;
+@flagX: 1rem;
+@mdWidth: 830px;
+@smWidth: 500px;
+@xsWidth: 300px;
 
 @import "pizza/pizza-card";
+
+body {
+    background-color: lighten(@mainColor, 45%);
+}
+
+.navbar {
+    z-index: 1;
+    opacity: 50%;
+    background-color: fadeout(darken(@headerMainColor, 50%), 5%);
+    padding-left: 12rem;
+
+    .top {
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+
+        .navbar-left {
+            padding-top: 0.5rem;
+
+            .text-top {
+                color: @headerMainColor;
+                margin-right: 5rem;
+            }
+        }
+
+        .navbar-right {
+            margin-right: 0;
+        }
+    }
+
+    .top:after {
+        border-bottom: 1px solid @headerMainColor;
+    }
+
+    .bottom {
+        color: @lightColor;
+        border-top: 1px solid @headerMainColor;
+        margin-top: 0.5rem;
+        padding: 1rem 0;
+    }
+}
+
+.large-text {
+    font-size: @large;
+}
+
+.button(@buttonColor) {
+    background-color: @buttonColor;
+    border-color: @buttonColor;
+}
+
+.btn-primary {
+    .button(@buttonColor);
+}
+
+.btn-primary:hover {
+    .button(darken(@buttonColor, 2%))
+}
+
+.btn-primary:focus, .btn-primary:active {
+    .button(darken(@buttonColor, 5%)) !important;
+}
+
+.main {
+    margin-top: 10rem;
+}
+
+footer {
+    border-top: 1px solid @footerMainColor;
+    background: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
+    padding: 5rem 0;
+}
+
+.flag {
+    position: fixed;
+    left: @flagX;
+    z-index: 2;
+    background-color: @flagColor;
+    color: @lightColor;
+    text-transform: uppercase;
+    width: @flagWidth;
+    padding-top: 17px;
+}
+
+.flag:before, .flag:after {
+    content: "";
+    position: fixed;
+    left: @flagX;
+}
+
+.top-flag {
+    top: 0;
+    height: @topFlagHeight;
+}
+
+.top-flag:after {
+    top: @topFlagHeight;
+    border-bottom: @flagYBorder solid transparent;
+}
+
+.bottom-flag {
+    bottom: 0;
+    height: @bottomFlagHeight;
+
+    hr {
+        border-top: 3px dotted darken(@flagColor, 5%);
+        margin: 0 1rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.bottom-flag:before {
+    bottom: @bottomFlagHeight;
+    border-top: @flagYBorder solid transparent;
+}
+
+.top-flag:after, .bottom-flag:before {
+    border-left: @flagXBorder solid @flagColor;
+    border-right: @flagXBorder solid @flagColor;
+}
+
+@media(max-width: @mdWidth) {
+    .md-hide {
+        display: none !important;
+    }
+}
+
+@media(max-width: @smWidth) {
+    .sm-hide {
+        display: none !important;
+    }
+}
+
+@media(max-width: @xsWidth) {
+}
