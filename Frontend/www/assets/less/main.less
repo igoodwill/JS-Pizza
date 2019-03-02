@@ -4,10 +4,15 @@
 @lightColor: white;
 @buttonColor: darken(@mainColor, 5%);
 @flagColor: darken(@mainColor, 7%);
+@secondaryColor: lighten(@headerMainColor, 31%);
 @large: 16px;
+@navbarHeight: 83px;
 @flagWidth: 100px;
 @topFlagHeight: 85px;
 @bottomFlagHeight: 125px;
+@cartWidth: 300px;
+@cartFooterHeight: 100px;
+@cartPizzaIconWidth: 5.5rem;
 @flagYBorder: 15px;
 @flagXBorder: @flagWidth / 2;
 @flagX: 1rem;
@@ -26,6 +31,8 @@ body {
     opacity: 50%;
     background-color: fadeout(darken(@headerMainColor, 50%), 5%);
     padding-left: 12rem;
+    padding-right: @cartWidth;
+    height: @navbarHeight;
 
     .top {
         padding-top: 0.5rem;
@@ -53,7 +60,7 @@ body {
         color: @lightColor;
         border-top: 1px solid @headerMainColor;
         margin-top: 0.5rem;
-        padding: 1rem 0;
+        padding-top: 1rem;
     }
 }
 
@@ -83,15 +90,18 @@ body {
 }
 
 footer {
-    border-top: 1px solid @footerMainColor;
-    background: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
     padding: 5rem 0;
+}
+
+footer, .cart-footer {
+    background: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
+    border-top: 1px solid @footerMainColor;
 }
 
 .flag {
     position: fixed;
     left: @flagX;
-    z-index: 2;
+    z-index: 3;
     background-color: @flagColor;
     color: @lightColor;
     text-transform: uppercase;
@@ -134,6 +144,137 @@ footer {
 .top-flag:after, .bottom-flag:before {
     border-left: @flagXBorder solid @flagColor;
     border-right: @flagXBorder solid @flagColor;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: @cartWidth;
+    height: 100%;
+    z-index: 2;
+
+    .header {
+        height: @navbarHeight;
+        padding: 0 1rem;
+        background-color: @lightColor;
+
+        .title {
+            line-height: @navbarHeight;
+        }
+
+        #ordered-count {
+            color: @lightColor;
+            padding: .1em .4em;
+            border-radius: 1rem;
+            min-width: 1em;
+            min-height: 1em;
+            text-align: center;
+            display: inline-block;
+            background-color: @mainColor;
+            border-color: @mainColor;
+            color: #FFF;
+        }
+
+        #clear-cart {
+            float: right;
+            color: @headerMainColor;
+            margin-top: @navbarHeight / 2 - 8px;
+        }
+
+        #clear-cart:hover {
+            cursor: pointer;
+            color: darken(@headerMainColor, 20%);
+        }
+
+        #clear-cart:active {
+            color: darken(@headerMainColor, 40%);
+            text-decoration: underline;
+        }
+    }
+
+    #cart {
+        background-color: @secondaryColor;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100%;
+
+        .pizza {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid @footerMainColor;
+            position: relative;
+
+            .title, .remove {
+                color: @flagColor;
+            }
+
+            .title {
+                font-weight: normal;
+                padding-bottom: 1rem;
+            }
+
+            .size-info {
+                padding-bottom: 1rem;
+                font-weight: 400;
+
+                .weight {
+                    margin-left: 2rem;
+                }
+            }
+
+            .controls {
+                font-weight: bold;
+
+                .minus, .plus, .remove {
+                    font-weight: bold;
+                    border-radius: 20px;
+                    margin: 0 1rem;
+                }
+            }
+
+            .icon {
+                position: absolute;
+                width: @cartPizzaIconWidth * 2;
+                right: -@cartPizzaIconWidth;
+                top: 1.5rem;
+            }
+        }
+    }
+
+    #cart:after {
+        content: "";
+        display: block;
+        height: @navbarHeight + @cartFooterHeight;
+        width: 100%;
+      }
+
+    .cart-footer {
+        height: @cartFooterHeight;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 1rem;
+
+        .sum {
+            float: right;
+        }
+
+        .order {
+            padding: 1rem;
+
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    }
+
+    .title {
+        font-weight: bold;
+    }
+}
+
+.left {
+    float: left;
 }
 
 @media(max-width: @mdWidth) {
