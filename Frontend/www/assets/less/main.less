@@ -6,6 +6,7 @@
 @flagColor: darken(@mainColor, 7%);
 @secondaryColor: lighten(@headerMainColor, 31%);
 @large: 16px;
+@largeText: 25px;
 @headerHeight: 83px;
 @flagWidth: 100px;
 @topFlagHeight: 85px;
@@ -83,6 +84,36 @@ body {
 .main {
     margin-right: @cartWidth;
     margin-top: 10rem;
+
+    .pizza-list {
+        .list-title {
+            .title {
+                font-size:  @largeText;
+                font-weight: bold;
+            }
+        }
+
+        #types {
+            margin: 2rem 0;
+            cursor: default;
+
+            li {
+                color: @flagColor;
+                margin: 0 1rem;
+                border-radius: 4px;
+                padding: 10px 15px;
+
+                &.active {
+                    color: @lightColor;
+                    background-color: @flagColor;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
 
 footer {
@@ -142,6 +173,19 @@ footer, .cart-footer {
     border-right: @flagXBorder solid @flagColor;
 }
 
+.counter {
+    color: @lightColor;
+    padding: .1em .4em;
+    border-radius: 1rem;
+    min-width: 1em;
+    min-height: 1em;
+    text-align: center;
+    display: inline-block;
+    background-color: @mainColor;
+    border-color: @mainColor;
+    color: #FFF;
+}
+
 .cart {
     position: fixed;
     top: 0;
@@ -157,19 +201,6 @@ footer, .cart-footer {
 
         .title {
             line-height: @headerHeight;
-        }
-
-        #ordered-count {
-            color: @lightColor;
-            padding: .1em .4em;
-            border-radius: 1rem;
-            min-width: 1em;
-            min-height: 1em;
-            text-align: center;
-            display: inline-block;
-            background-color: @mainColor;
-            border-color: @mainColor;
-            color: #FFF;
         }
 
         #clear-cart {
