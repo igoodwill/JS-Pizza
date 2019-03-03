@@ -6,7 +6,7 @@
 @flagColor: darken(@mainColor, 7%);
 @secondaryColor: lighten(@headerMainColor, 31%);
 @large: 16px;
-@navbarHeight: 83px;
+@headerHeight: 83px;
 @flagWidth: 100px;
 @topFlagHeight: 85px;
 @bottomFlagHeight: 125px;
@@ -16,9 +16,9 @@
 @flagYBorder: 15px;
 @flagXBorder: @flagWidth / 2;
 @flagX: 1rem;
-@mdWidth: 830px;
-@smWidth: 500px;
-@xsWidth: 300px;
+@mdWidth: 1010px;
+@smWidth: 820px;
+@xsWidth: 633px;
 
 @import "pizza/pizza-card";
 
@@ -26,29 +26,24 @@ body {
     background-color: lighten(@mainColor, 45%);
 }
 
-.navbar {
+.header {
     z-index: 1;
     opacity: 50%;
     background-color: fadeout(darken(@headerMainColor, 50%), 5%);
     padding-left: 12rem;
     padding-right: @cartWidth;
-    height: @navbarHeight;
+    height: @headerHeight;
 
     .top {
         padding-top: 0.5rem;
         padding-bottom: 1rem;
 
-        .navbar-left {
+        .left {
             padding-top: 0.5rem;
 
             .text-top {
                 color: @headerMainColor;
-                margin-right: 5rem;
             }
-        }
-
-        .navbar-right {
-            margin-right: 0;
         }
     }
 
@@ -59,8 +54,8 @@ body {
     .bottom {
         color: @lightColor;
         border-top: 1px solid @headerMainColor;
-        margin-top: 0.5rem;
-        padding-top: 1rem;
+        margin-top: .5rem;
+        padding-top: .8rem;
     }
 }
 
@@ -155,12 +150,12 @@ footer, .cart-footer {
     z-index: 2;
 
     .header {
-        height: @navbarHeight;
+        height: @headerHeight;
         padding: 0 1rem;
         background-color: @lightColor;
 
         .title {
-            line-height: @navbarHeight;
+            line-height: @headerHeight;
         }
 
         #ordered-count {
@@ -179,7 +174,7 @@ footer, .cart-footer {
         #clear-cart {
             float: right;
             color: @headerMainColor;
-            margin-top: @navbarHeight / 2 - 8px;
+            margin-top: @headerHeight / 2 - 8px;
         }
 
         #clear-cart:hover {
@@ -244,7 +239,7 @@ footer, .cart-footer {
     #cart:after {
         content: "";
         display: block;
-        height: @navbarHeight + @cartFooterHeight;
+        height: @headerHeight + @cartFooterHeight;
         width: 100%;
       }
 
@@ -277,6 +272,10 @@ footer, .cart-footer {
     float: left;
 }
 
+.right {
+    float: right;
+}
+
 @media(max-width: @mdWidth) {
     .md-hide {
         display: none !important;
@@ -290,4 +289,7 @@ footer, .cart-footer {
 }
 
 @media(max-width: @xsWidth) {
+    .xs-hide {
+        display: none !important;
+    }
 }
