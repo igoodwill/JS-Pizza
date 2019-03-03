@@ -12,7 +12,7 @@
 @bottomFlagHeight: 125px;
 @cartWidth: 300px;
 @cartFooterHeight: 100px;
-@cartPizzaIconWidth: 5.5rem;
+@cartPizzaIconWidth: 4.5rem;
 @flagYBorder: 15px;
 @flagXBorder: @flagWidth / 2;
 @flagX: 1rem;
@@ -81,6 +81,7 @@ body {
 }
 
 .main {
+    margin-right: @cartWidth;
     margin-top: 10rem;
 }
 
@@ -231,7 +232,7 @@ footer, .cart-footer {
                 position: absolute;
                 width: @cartPizzaIconWidth * 2;
                 right: -@cartPizzaIconWidth;
-                top: 1.5rem;
+                top: 2rem;
             }
         }
     }

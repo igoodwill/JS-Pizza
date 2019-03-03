@@ -1,9 +1,52 @@
+@largeText: 25px;
+@labelOffset: -5px;
+@cardWidth: 300px;
+@pizzaInfoHeight: 400px;
+
 .pizza-card {
-  img {
-    max-width: 250px;
+  max-width: @cardWidth;
+
+  .title, .price {
+    font-size: @largeText;
+    font-weight: bold;
   }
 
-  .title {
-    color: @mainColor;
+  .pizza-info {
+    height: @pizzaInfoHeight;
+
+    img {
+      max-width: 90%;
+    }
+  
+    .title {
+      color: @flagColor;
+    }
+  
+    .type {
+      color: @headerMainColor;
+    }
+  
+    .description:first-letter {
+      text-transform: uppercase;
+    }
+  
+    .label {
+      position: absolute;
+      top: @labelOffset;
+      right: 0;
+      font-size: @large;
+    }
+  }
+
+  .sizes {
+    margin-bottom: 1rem;
+
+    .buy-size {
+      text-align: center;
+
+      .size, .weight {
+        display: block;
+      }
+    }
   }
 }
