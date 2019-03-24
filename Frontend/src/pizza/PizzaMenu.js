@@ -130,3 +130,4 @@ function initialiseMenu() {
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
+exports.Pizza_List = Pizza_List;

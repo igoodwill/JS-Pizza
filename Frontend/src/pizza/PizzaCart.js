@@ -1,7 +1,10 @@
 var Templates = require('../Templates');
+var PizzaList = require('./PizzaMenu').Pizza_List;
+var Storage = require('basil.js');
+Storage = new Storage();
 
 //Змінна в якій зберігаються перелік піц в кошику
-var Cart = [], sum;
+var Cart = [];
 
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
@@ -28,15 +31,12 @@ function addToCart(cartItem) {
 
     var existingItem = getCart(cartItem);
     var price = getPrice(cartItem);
-    sum += price;
 
     if (existingItem) {
         existingItem.quantity++;
-        existingItem.totalPrice += price;
     } else {
         setCart(cartItem, cartItem);
         cartItem.quantity = 1;
-        cartItem.totalPrice = price;
 
         Cart.push(cartItem);
     }
@@ -51,9 +51,22 @@ function removeFromCart(cartItem) {
     Cart.splice(id, 1);
 
     setCart(cartItem, undefined);
-    sum -= cartItem.totalPrice;
 
     //Після видалення оновити відображення
+    updateCart();
+}
+
+function init() {
+    var arr = JSON.parse(Storage.get('cart'));
+    if (arr) {
+        arr.forEach(({ id, size, quantity }) => {
+            var pizza = PizzaList.find(p => p.id == id);
+            var cartItem = { pizza, size, quantity };
+            Cart.push(cartItem);
+            setCart(cartItem, cartItem);
+        });
+    }
+
     updateCart();
 }
 
@@ -63,7 +76,6 @@ function initialiseCart() {
 
     Cart.forEach(item => setCart(item, undefined));
     Cart = [];
-    sum = 0;
     updateCart();
 }
 
@@ -78,6 +90,7 @@ function updateCart() {
 
     //Очищаємо старі піци в кошику
     $cart.html("");
+    var sum = 0;
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
@@ -90,12 +103,11 @@ function updateCart() {
         }
 
         var price = getPrice(cart_item);
+        sum += cart_item.quantity * price;
 
         $minus.click(function () {
             //Зменшуємо кількість замовлених піц
             cart_item.quantity -= 1;
-            cart_item.totalPrice -= price;
-            sum -= price;
 
             //Оновлюємо відображення
             updateCart();
@@ -116,10 +128,18 @@ function updateCart() {
     Cart.forEach(showOnePizzaInCart);
     $orderedCount.text(Cart.length);
     $sum.text(sum);
+
+    saveToStorage();
+}
+
+function saveToStorage() {
+    var arr = [];
+    Cart.forEach(item => arr.push({ id: item.pizza.id, size: item.size, quantity: item.quantity }));
+    Storage.set('cart', JSON.stringify(arr));
 }
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
 
 exports.getPizzaInCart = getPizzaInCart;
-exports.initialiseCart = initialiseCart;
+exports.initialiseCart = init;
