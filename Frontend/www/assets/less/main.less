@@ -1,26 +1,26 @@
 @mainColor: orange;
-@headerMainColor: darkgrey;
-@footerMainColor: lighten(@headerMainColor, 20%);
-@lightColor: white;
-@buttonColor: darken(@mainColor, 5%);
-@flagColor: darken(@mainColor, 7%);
-@secondaryColor: lighten(@headerMainColor, 31%);
-@buttonDefaultBg: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
-@large: 16px;
-@largeText: 25px;
-@headerHeight: 83px;
-@flagWidth: 100px;
-@topFlagHeight: 85px;
-@bottomFlagHeight: 125px;
-@cartWidth: 300px;
-@cartFooterHeight: 100px;
+@headerMainColor   : darkgrey;
+@footerMainColor   : lighten(@headerMainColor, 20%);
+@lightColor        : white;
+@buttonColor       : darken(@mainColor, 5%);
+@flagColor         : darken(@mainColor, 7%);
+@secondaryColor    : lighten(@headerMainColor, 31%);
+@buttonDefaultBg   : linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
+@large             : 16px;
+@largeText         : 25px;
+@headerHeight      : 83px;
+@flagWidth         : 100px;
+@topFlagHeight     : 85px;
+@bottomFlagHeight  : 125px;
+@cartWidth         : 300px;
+@cartFooterHeight  : 100px;
 @cartPizzaIconWidth: 4.5rem;
-@flagYBorder: 15px;
-@flagXBorder: @flagWidth / 2;
-@flagX: 1rem;
-@mdWidth: 1010px;
-@smWidth: 820px;
-@xsWidth: 633px;
+@flagYBorder       : 15px;
+@flagXBorder       : @flagWidth / 2;
+@flagX             : 1rem;
+@mdWidth           : 1010px;
+@smWidth           : 820px;
+@xsWidth           : 633px;
 
 @import "pizza/pizza-card";
 
@@ -29,21 +29,23 @@ body {
 }
 
 a {
-    &, &:hover {
+
+    &,
+    &:hover {
         color: @lightColor;
     }
 }
 
 .header {
-    z-index: 1;
-    opacity: 50%;
+    z-index         : 1;
+    opacity         : 50%;
     background-color: fadeout(darken(@headerMainColor, 50%), 5%);
-    padding-left: 12rem;
-    padding-right: @cartWidth;
-    height: @headerHeight;
+    padding-left    : 12rem;
+    padding-right   : @cartWidth;
+    height          : @headerHeight;
 
     .top {
-        padding-top: 0.5rem;
+        padding-top   : 0.5rem;
         padding-bottom: 1rem;
 
         .left {
@@ -60,9 +62,9 @@ a {
     }
 
     .bottom {
-        color: @lightColor;
-        border-top: 1px solid @headerMainColor;
-        margin-top: .5rem;
+        color      : @lightColor;
+        border-top : 1px solid @headerMainColor;
+        margin-top : .5rem;
         padding-top: .8rem;
     }
 }
@@ -72,7 +74,7 @@ a {
 }
 
 .button(@button, @borderColor) {
-    background: @button;
+    background  : @button;
     border-color: @borderColor;
 }
 
@@ -88,7 +90,8 @@ a {
     .button(darken(@buttonColor, 2%))
 }
 
-.btn-primary:focus, .btn-primary:active {
+.btn-primary:focus,
+.btn-primary:active {
     .button(darken(@buttonColor, 5%)) !important;
 }
 
@@ -98,12 +101,12 @@ a {
 
 .main {
     margin-right: @cartWidth;
-    margin-top: 10rem;
+    margin-top  : 10rem;
 
     .pizza-list {
         .list-title {
             .title {
-                font-size:  @largeText;
+                font-size  : @largeText;
                 font-weight: bold;
             }
         }
@@ -113,13 +116,13 @@ a {
             cursor: default;
 
             li {
-                color: @flagColor;
-                margin: 0 1rem;
+                color        : @flagColor;
+                margin       : 0 1rem;
                 border-radius: 4px;
-                padding: 10px 15px;
+                padding      : 10px 15px;
 
                 &.active {
-                    color: @lightColor;
+                    color           : @lightColor;
                     background-color: @flagColor;
                 }
 
@@ -135,38 +138,80 @@ footer {
     padding: 5rem 0;
 }
 
-footer, .cart-footer {
+footer,
+.cart-footer {
     background: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
     border-top: 1px solid @footerMainColor;
 }
 
-#order .cart-footer {
-    background: @lightColor;
+#order {
+    .cart-footer {
+        background: @lightColor;
+    }
+
+    .form-description {
+        font-size     : 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .bs-callout {
+        padding          : 20px;
+        border           : 1px solid #eee;
+        border-left-color: rgb(238, 238, 238);
+        border-left-width: 1px;
+        border-left-width: 5px;
+        border-radius    : 3px;
+        background-color : #fff;
+    }
+
+    .bs-callout-warning {
+        border-left-color: @mainColor  !important;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+
+        &.next-step-wrap {
+            float       : right;
+            margin-right: 10px;
+            margin-top  : 15px;
+
+            .next-step-width {
+                width: 110px;
+            }
+        }
+
+        .help-box {
+            margin-left: 100px;
+            color      : #880a02;
+        }
+    }
 }
 
 .flag {
-    position: fixed;
-    left: @flagX;
-    z-index: 3;
+    position        : fixed;
+    left            : @flagX;
+    z-index         : 3;
     background-color: @flagColor;
-    color: @lightColor;
-    text-transform: uppercase;
-    width: @flagWidth;
-    padding-top: 17px;
+    color           : @lightColor;
+    text-transform  : uppercase;
+    width           : @flagWidth;
+    padding-top     : 17px;
 }
 
-.flag:before, .flag:after {
-    content: "";
+.flag:before,
+.flag:after {
+    content : "";
     position: fixed;
-    left: @flagX;
+    left    : @flagX;
 }
 
 .top-flag {
-    top: 0;
+    top   : 0;
     height: @topFlagHeight;
 
     &:after {
-        top: @topFlagHeight;
+        top          : @topFlagHeight;
         border-bottom: @flagYBorder solid transparent;
     }
 
@@ -180,46 +225,47 @@ footer, .cart-footer {
     height: @bottomFlagHeight;
 
     hr {
-        border-top: 3px dotted darken(@flagColor, 5%);
-        margin: 0 1rem;
+        border-top    : 3px dotted darken(@flagColor, 5%);
+        margin        : 0 1rem;
         padding-bottom: 0.5rem;
     }
 }
 
 .bottom-flag:before {
-    bottom: @bottomFlagHeight;
+    bottom    : @bottomFlagHeight;
     border-top: @flagYBorder solid transparent;
 }
 
-.top-flag:after, .bottom-flag:before {
-    border-left: @flagXBorder solid @flagColor;
+.top-flag:after,
+.bottom-flag:before {
+    border-left : @flagXBorder solid @flagColor;
     border-right: @flagXBorder solid @flagColor;
 }
 
 .counter {
-    color: @lightColor;
-    padding: .1em .4em;
-    border-radius: 1rem;
-    min-width: 1em;
-    min-height: 1em;
-    text-align: center;
-    display: inline-block;
+    color           : @lightColor;
+    padding         : .1em .4em;
+    border-radius   : 1rem;
+    min-width       : 1em;
+    min-height      : 1em;
+    text-align      : center;
+    display         : inline-block;
     background-color: @mainColor;
-    border-color: @mainColor;
-    color: #FFF;
+    border-color    : @mainColor;
+    color           : #FFF;
 }
 
 .cart {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: @cartWidth;
-    height: 100%;
-    z-index: 2;
+    top     : 0;
+    right   : 0;
+    width   : @cartWidth;
+    height  : 100%;
+    z-index : 2;
 
     .header {
-        height: @headerHeight;
-        padding: 0 1rem;
+        height          : @headerHeight;
+        padding         : 0 1rem;
         background-color: @lightColor;
 
         .title {
@@ -227,45 +273,46 @@ footer, .cart-footer {
         }
 
         #clear-cart {
-            float: right;
-            color: @headerMainColor;
+            float     : right;
+            color     : @headerMainColor;
             margin-top: @headerHeight / 2 - 8px;
         }
 
         #clear-cart:hover {
             cursor: pointer;
-            color: darken(@headerMainColor, 20%);
+            color : darken(@headerMainColor, 20%);
         }
 
         #clear-cart:active {
-            color: darken(@headerMainColor, 40%);
+            color          : darken(@headerMainColor, 40%);
             text-decoration: underline;
         }
     }
 
     #cart {
         background-color: @secondaryColor;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        height: 100%;
+        overflow-y      : scroll;
+        overflow-x      : hidden;
+        height          : 100%;
 
         .pizza {
-            padding: 2rem 1.5rem;
+            padding      : 2rem 1.5rem;
             border-bottom: 1px solid @footerMainColor;
-            position: relative;
+            position     : relative;
 
-            .title, .remove {
+            .title,
+            .remove {
                 color: @flagColor;
             }
 
             .title {
-                font-weight: normal;
+                font-weight   : normal;
                 padding-bottom: 1rem;
             }
 
             .size-info {
                 padding-bottom: 1rem;
-                font-weight: 400;
+                font-weight   : 400;
 
                 .weight {
                     margin-left: 2rem;
@@ -275,10 +322,12 @@ footer, .cart-footer {
             .controls {
                 font-weight: bold;
 
-                .minus, .plus, .remove {
-                    font-weight: bold;
+                .minus,
+                .plus,
+                .remove {
+                    font-weight  : bold;
                     border-radius: 20px;
-                    margin: 0 1rem;
+                    margin       : 0 1rem;
                 }
 
                 span {
@@ -288,9 +337,9 @@ footer, .cart-footer {
 
             .icon {
                 position: absolute;
-                width: @cartPizzaIconWidth * 2;
-                right: -@cartPizzaIconWidth;
-                top: 2rem;
+                width   : @cartPizzaIconWidth * 2;
+                right   : -@cartPizzaIconWidth;
+                top     : 2rem;
             }
         }
     }
@@ -298,16 +347,16 @@ footer, .cart-footer {
     #cart:after {
         content: "";
         display: block;
-        height: @headerHeight + @cartFooterHeight;
-        width: 100%;
-      }
+        height : @headerHeight + @cartFooterHeight;
+        width  : 100%;
+    }
 
     .cart-footer {
-        height: @cartFooterHeight;
-        width: 100%;
+        height  : @cartFooterHeight;
+        width   : 100%;
         position: absolute;
-        bottom: 0;
-        padding: 1rem;
+        bottom  : 0;
+        padding : 1rem;
 
         .sum {
             float: right;

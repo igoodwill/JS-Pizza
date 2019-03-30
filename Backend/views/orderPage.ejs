@@ -2,21 +2,68 @@
 
 <div id="order">
     <%- include('common/cart', {order: true}) %>
-</div>
-
-<div class="container">
-    <div class="main text-center">
-        <div class="pizza-list">
-            <div class="list-title">
-                <span id="type" class="title large-text">
-                    Усі піци
-                </span>
-                <span id="count" class="counter small">1</span>
+    <div class="container">
+        <div class="main">
+            <div class="form-description">
+                1. Контактні дані
             </div>
-            <ul id="types" class="list-inline">
-                <li class="active">Усі</li>
-            </ul>
-            <div class="row" id="pizza_list">
+            <div class="row">
+                <div class="col-md-7">
+                    <form class="form-horizontal">
+                        <div class="form-group name-group">
+                            <label class="col-sm-2 control-label">Ім’я</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputName" placeholder="Ім’я Фамілія"
+                                    pattern="[a-zA-Zа-яА-ЯіІїЇєЄґҐ]+ [a-zA-Zа-яА-ЯіІїЇєЄґҐ]+" required>
+                            </div>
+                            <span class="help-box" hidden>
+                                Введіть тільки власне ім’я, без цифр
+                            </span>
+                        </div>
+                        <div class="form-group phone-group">
+                            <label class="col-sm-2 control-label">Телефон</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputPhone" placeholder="+380994010999"
+                                    pattern="(\+380|0)\d{9}" required>
+                            </div>
+                            <span class="help-box" hidden>
+                                Введіть номер телефону у форматі +380 або почніть з 0
+                            </span>
+                        </div>
+                        <div class="form-group address-group">
+                            <label class="col-sm-2 control-label">Адреса</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="inputAddress"
+                                    placeholder="Київ, вул. Спаська, 2" required>
+                            </div>
+                            <span class="help-box" hidden>
+                                Введіть адресу доставки піци
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5">
+                    <div class="bs-callout bs-callout-warning">
+                        <h4>Інформація про замовлення</h4>
+                        <p>
+                            <b>Приблизний час доставки:</b> невідомий
+                        </p>
+                        <p>
+                            <b>Адреса доставки:</b> невідома
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group next-step-wrap">
+                    <div class="next-step-width">
+                        <button id="next" class="btn btn-warning btn-block">
+                            Далі
+                            <i class="glyphicon glyphicon-chevron-right icon-white">
+                            </i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -24,3 +71,4 @@
 
 <script> var order = true; </script>
 <% include common/footer.ejs %>
+<script type="text/javascript" src="assets/js/order.js"></script>
