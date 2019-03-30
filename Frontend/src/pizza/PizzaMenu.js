@@ -118,6 +118,7 @@ function filterPizza(filter) {
 
 function initialiseMenu(list) {
     Pizza_List = list;
+    exports.Pizza_List = Pizza_List;
 
     //Показуємо усі піци
     showPizzaList(Pizza_List);
@@ -132,4 +133,3 @@ function initialiseMenu(list) {
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-exports.Pizza_List = Pizza_List;

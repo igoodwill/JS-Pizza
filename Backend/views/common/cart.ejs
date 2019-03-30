@@ -1,0 +1,36 @@
+<div class="cart">
+    <div class="header">
+        <div class="left">
+            <span class="title large-text">
+                Замовлення
+            </span>
+            <span id="ordered-count" class="counter small"></span>
+        </div>
+        <% if (!order) { %>
+        <small id="clear-cart">
+            Очистити замовлення
+        </small>
+        <% } %>
+    </div>
+    <div id="cart"></div>
+    <div class="cart-footer">
+        <div class="title large-text">
+            Сума замовлення
+            <div class="sum">
+                <span id="sum"></span>
+                грн
+            </div>
+        </div>
+        <div class="order">
+            <% if (order) { %>
+            <a class="btn btn-default" href="/">
+                Редагувати замовлення
+            </a>
+            <% } else { %>
+            <a id="order-button" class="btn btn-primary" href="/order" disabled>
+                Замовити
+            </a>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@
 @buttonColor: darken(@mainColor, 5%);
 @flagColor: darken(@mainColor, 7%);
 @secondaryColor: lighten(@headerMainColor, 31%);
+@buttonDefaultBg: linear-gradient(to top, @footerMainColor, lighten(@headerMainColor, 40%));
 @large: 16px;
 @largeText: 25px;
 @headerHeight: 83px;
@@ -25,6 +26,12 @@
 
 body {
     background-color: lighten(@mainColor, 45%);
+}
+
+a {
+    &, &:hover {
+        color: @lightColor;
+    }
 }
 
 .header {
@@ -64,9 +71,13 @@ body {
     font-size: @large;
 }
 
-.button(@buttonColor) {
-    background-color: @buttonColor;
-    border-color: @buttonColor;
+.button(@button, @borderColor) {
+    background: @button;
+    border-color: @borderColor;
+}
+
+.button(@button) {
+    .button(@button, @button);
 }
 
 .btn-primary {
@@ -79,6 +90,10 @@ body {
 
 .btn-primary:focus, .btn-primary:active {
     .button(darken(@buttonColor, 5%)) !important;
+}
+
+.btn-default {
+    .button(@buttonDefaultBg, @footerMainColor);
 }
 
 .main {
@@ -125,6 +140,10 @@ footer, .cart-footer {
     border-top: 1px solid @footerMainColor;
 }
 
+#order .cart-footer {
+    background: @lightColor;
+}
+
 .flag {
     position: fixed;
     left: @flagX;
@@ -145,11 +164,15 @@ footer, .cart-footer {
 .top-flag {
     top: 0;
     height: @topFlagHeight;
-}
 
-.top-flag:after {
-    top: @topFlagHeight;
-    border-bottom: @flagYBorder solid transparent;
+    &:after {
+        top: @topFlagHeight;
+        border-bottom: @flagYBorder solid transparent;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 .bottom-flag {
@@ -257,6 +280,10 @@ footer, .cart-footer {
                     border-radius: 20px;
                     margin: 0 1rem;
                 }
+
+                span {
+                    margin-left: 1rem;
+                }
             }
 
             .icon {
@@ -289,7 +316,7 @@ footer, .cart-footer {
         .order {
             padding: 1rem;
 
-            .btn-primary {
+            .btn {
                 width: 100%;
             }
         }

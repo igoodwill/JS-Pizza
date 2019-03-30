@@ -1,5 +1,4 @@
 var Templates = require('../Templates');
-var PizzaList = require('./PizzaMenu').Pizza_List;
 var Storage = require('basil.js');
 Storage = new Storage();
 
@@ -11,6 +10,7 @@ var $cart = $("#cart");
 var $orderedCount = $("#ordered-count");
 var $clearCart = $("#clear-cart");
 var $sum = $("#sum");
+var $order = $("#order-button");
 
 $clearCart.click(initialiseCart);
 
@@ -57,6 +57,8 @@ function removeFromCart(cartItem) {
 }
 
 function init() {
+    var PizzaList = require('./PizzaMenu').Pizza_List;
+
     var arr = JSON.parse(Storage.get('cart'));
     if (arr) {
         arr.forEach(({ id, size, quantity }) => {
@@ -94,7 +96,7 @@ function updateCart() {
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
-        var html_code = Templates.PizzaCart_OneItem(cart_item);
+        var html_code = Templates.PizzaCart_OneItem({ ...cart_item, order});
 
         var $node = $(html_code);
         var $minus = $node.find(".minus");
@@ -128,6 +130,7 @@ function updateCart() {
     Cart.forEach(showOnePizzaInCart);
     $orderedCount.text(Cart.length);
     $sum.text(sum);
+    $order.attr("disabled", !Cart.length);
 
     saveToStorage();
 }

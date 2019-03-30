@@ -15,6 +15,9 @@
     </div>
     <div class="controls">
         <%= quantity * sizeObject.price %>грн
+        <% if (order) { %>
+        <span><%= quantity %></span>
+        <% } else { %>
         <button class="btn btn-danger minus">
             -
         </button>
@@ -25,6 +28,8 @@
         <button class="btn btn-default remove">
             x
         </button>
+        <% } %>
     </div>
+
     <img class="icon" src="<%= pizza.icon %>">
 </div>
