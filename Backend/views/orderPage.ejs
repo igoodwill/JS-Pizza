@@ -34,7 +34,7 @@
                             <label class="col-sm-2 control-label">Адреса</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" id="inputAddress"
-                                    placeholder="Київ, вул. Спаська, 2" required>
+                                    placeholder="Київ, вул. Спаська, 2">
                             </div>
                             <span class="help-box" hidden>
                                 Введіть адресу доставки піци
@@ -46,10 +46,10 @@
                     <div class="bs-callout bs-callout-warning">
                         <h4>Інформація про замовлення</h4>
                         <p>
-                            <b>Приблизний час доставки:</b> невідомий
+                            <b>Приблизний час доставки:</b> <span id="time">невідомий</span>
                         </p>
                         <p>
-                            <b>Адреса доставки:</b> невідома
+                            <b>Адреса доставки:</b> <span id="address">невідома</span>
                         </p>
                     </div>
                 </div>
@@ -65,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            <div id="googleMap" class="google-maps"></div>
         </div>
     </div>
 </div>
