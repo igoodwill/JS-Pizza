@@ -1,6 +1,6 @@
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../list.json').pizza_info;
+var Pizza_List;
 
 var $currentType = $("#type");
 var $count = $("#count");
@@ -116,7 +116,9 @@ function filterPizza(filter) {
     showPizzaList(pizza_shown);
 }
 
-function initialiseMenu() {
+function initialiseMenu(list) {
+    Pizza_List = list;
+
     //Показуємо усі піци
     showPizzaList(Pizza_List);
 

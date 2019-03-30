@@ -1,0 +1,49 @@
+<% include common/header.ejs %>
+
+<div class="cart">
+    <div class="header">
+        <div class="left">
+            <span class="title large-text">
+                Замовлення
+            </span>
+            <span id="ordered-count" class="counter small"></span>
+        </div>
+        <small id="clear-cart">
+            Очистити замовлення
+        </small>
+    </div>
+    <div id="cart"></div>
+    <div class="cart-footer">
+        <div class="title large-text">
+            Сума замовлення
+            <div class="sum">
+                <span id="sum"></span>
+                грн
+            </div>
+        </div>
+        <div class="order">
+            <button class="btn btn-primary">
+                Замовити
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="main text-center">
+        <div class="pizza-list">
+            <div class="list-title">
+                <span id="type" class="title large-text">
+                    Усі піци
+                </span>
+                <span id="count" class="counter small">1</span>
+            </div>
+            <ul id="types" class="list-inline">
+                <li class="active">Усі</li>
+            </ul>
+            <div class="row" id="pizza_list">
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include common/footer.ejs %>

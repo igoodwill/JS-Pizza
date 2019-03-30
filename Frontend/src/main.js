@@ -6,7 +6,10 @@ $(function () {
     //This code will execute when the page is ready
     var PizzaCart = require('./pizza/PizzaCart');
     var PizzaMenu = require('./pizza/PizzaMenu');
+    var api = require('./API');
 
-    PizzaMenu.initialiseMenu();
-    PizzaCart.initialiseCart();
+    api.getPizzaList((error, list) => {
+        PizzaMenu.initialiseMenu(list);
+        PizzaCart.initialiseCart();
+    });
 });
